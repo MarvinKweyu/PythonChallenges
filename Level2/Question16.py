@@ -13,5 +13,6 @@ list_of_input = user_input.split(",")
 list_of_output = []
 
 for num in range(0,(len(list_of_input)+1),2):
-    list_of_output.append(num)
+    item = list_of_input[num]
+    list_of_output.append(item)
 print(list_of_output)
