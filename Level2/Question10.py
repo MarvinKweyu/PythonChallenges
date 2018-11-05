@@ -21,4 +21,4 @@ unique_words = set(list_of_input)
 
 list_of_output = list(unique_words)
 
-print(" ".join(list_of_output.so)
+print(" ".join(sorted(list_of_output)))

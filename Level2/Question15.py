@@ -11,11 +11,5 @@ user_input = int(input("Enter your value: "))
 
 a = str(user_input)
 
-values = []
-
-for item in range(0,4):
-    values.append(a)
-    a+=a
-
-#solution = a + aa + aaa + aaaa
-print(values)
+solution = int(a) + int(a+a) +int(a+a+a) + int(a+a+a+a)
+print(solution)

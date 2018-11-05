@@ -17,7 +17,7 @@ while True:
     if user_input:
         lines.append(user_input)
     else:
-        break;
+        break
 
 for sentence in lines:
     print(sentence)
