@@ -1,27 +1,35 @@
 import csv
+import random  # randomize room selection
 
 
 class Hostel(object):
-    def __init__(self, name=None, apartment_type=None, internet_fee=None):
+    def __init__(
+        self, name=None, apartment_type=None, room_type=None, internet_fee=None
+    ):
         self.name = name
         self.apartment_type = apartment_type
+        self.room_type = room_type
         self.internet_fee = internet_fee
         # variables from program
         self.apartments_available = 20  # available per type
         self.typeA_rooms = 2
-        self.typeb_rooms = 3
+        self.typeB_rooms = 3
 
-        self.semester_duration = 5
 
-        # self.apartment_Number = apartment_Number
-        # self.roomNumber = roomNumber
-        # self.recommend_room()
-
-    def recommend_room(self):
+    def recommend_room(self, room_type="single"):
         """
         Check number of occupants in room and recommend next available room
         """
-        pass
+        apartments_in_A = self.typeA_rooms * 20
+
+        self.room_type = room_type
+
+        if self.room_type == "master":
+            self.monthly_rent = 500
+        else:
+            self.monthly_rent = 300
+
+        self.room_number = random.randint(0, apartments_in_A)
 
     def calculate_rent(
         self, deposit=100, monthly_rent=500, semester=5, payment_plan="full",
@@ -63,12 +71,21 @@ class Hostel(object):
         student_details = {
             "name": self.name,
             "apartment_type": self.apartment_type,
+            "room_type": self.room_type,
+            "room_number": self.room_number,
             "internet": self.internet_fee,
             "payable": self.rent,
         }
 
         with open("student_records.csv", mode="a+", newline="") as csv_file:
-            fieldnames = ["name", "apartment_type", "internet", "payable"]
+            fieldnames = [
+                "name",
+                "apartment_type",
+                "room_type",
+                "room_number",
+                "internet",
+                "payable",
+            ]
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
             writer.writerow(student_details)
@@ -87,7 +104,6 @@ class Hostel(object):
         """
         Read storage field for records
         """
-        # search_items = [name, apartment_type, apartment_number]
 
         with open("student_records.csv") as student_file:
             csv_reader = csv.reader(student_file, delimiter=",")
@@ -123,11 +139,19 @@ def register():
     )
 
     if internet_fee == 1:
-        hostel_client = Hostel(name, apartment_type, internet_fee=50)
+        internet_fee = 50
     else:
-        hostel_client = Hostel(name, apartment_type, internet_fee=40)
+        internet_fee = 40
 
-    # Hostel.recommend_room()
+    hostel_client = Hostel(name, apartment_type, internet_fee)
+
+    if apartment_type == "B":
+        room_type = input("Room type: (master/single): \n")
+
+        hostel_client.recommend_room(room_type)
+    else:
+        hostel_client.recommend_room()
+
     payment_plan = input(
         "Enter payment:(full/partial) \n1.partial(You will be required to pay 1/2 of initial rent)\n2.full\n"
     )
