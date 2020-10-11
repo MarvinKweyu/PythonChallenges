@@ -1,0 +1,120 @@
+Program : Create a json based file with questions and answers marked with their difficulty and marks.
+
+
+
+Function inputSomething
+  Pass In: string
+  Repeatedly prompts for input until something other than whitespace is entered
+  Pass Out: string
+Endfunction 
+
+Function inputInt
+  Pass In: integer
+  Repeatedly prompts for input until an integer is entered.
+  Pass Out: integer
+Endfunction 
+
+Function save
+  Pass In: nothing
+  open "data.txt" in write mode and write the data to it in JSON format.
+  Pass Out: nothing
+Endfunction 
+
+Function inputQuestionAnswers
+  Pass In: nothing
+  Accept multiple choice answers
+  Pass Out: array of all answers for specific question
+Endfunction 
+
+Function inputQuestionDifficulty
+  Pass In: nothing
+  set question difficulty level
+  Pass Out: integer of question difficulty, ranging from 1-5
+Endfunction 
+
+
+Function calculateMarks
+  Pass In: difficulty
+  calculate marks
+  Pass Out: marks
+Endfunction
+
+Function additionOfQuestion
+  Pass In: nothing
+  set new question data
+  call: save
+  Pass Out: nothing
+Endfunction
+
+Function listOfQuestions
+  Pass In: nothing
+  display all qestions
+  Pass Out: nothing
+Endfunction
+
+Function search
+  Pass In: nothing
+  call: inputSomething
+  displau all questions based on search term
+  Pass Out: nothing
+Endfunction
+
+Function viewQuestionDetail
+  Pass In: nothing
+  call: inputInt
+  Pass Out: question details
+Endfunction
+
+set data to None
+BEGIN
+    attempt to read the file 'data.txt'
+    with the file open, load the contents to a variable
+EXCEPTION
+    WHEN FileNotFoundError
+        set data to an empty array
+END
+
+Function main
+  Pass In: nothing
+  show welcome message
+  WHILE True
+   show navigation prompt
+
+    IF adding new question
+    THEN
+        call: additionOfQuestion
+    ENDIF
+
+    IF listing questions
+    THEN
+     call: listOfQuestions
+    ENDIF
+
+    IF searching for question
+    THEN
+      call: search
+    ENDIF
+
+    IF viewing question
+    THEN
+        call: viewQuestionDetail
+    ENDIF
+
+    IF deleting question
+    THEN
+        call: delete
+    ENDIF
+
+    IF quiting program
+    THEN
+       break WHILE
+       quit program
+
+    ENDIF
+    ENDWHILE
+
+Endfunction
+
+
+
+
