@@ -13,6 +13,7 @@ import json
 import random
 
 from project import admin
+# from . import admin
 
 try:
     # read file in read mode

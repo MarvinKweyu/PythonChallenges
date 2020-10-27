@@ -10,5 +10,14 @@
     "answers": "something random",
     "difficulty": "3",
     "marks": "33"
+  },
+  {
+    "question": "Random question?",
+    "answers": [
+      "new answer",
+      "random answer"
+    ],
+    "difficulty": 3,
+    "marks": 6
   }
 ]
