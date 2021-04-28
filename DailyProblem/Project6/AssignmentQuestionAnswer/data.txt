@@ -1,0 +1,53 @@
+[
+    {
+      "question": "When was the Olympics?",
+      "answers": [
+        "zero",
+        "2016",
+        "2000",
+        "yesterday"
+      ],
+      "difficulty": 3
+    },
+    {
+      "question": "Who was the first man on the moon?",
+      "answers": [
+        "Albert Einstein",
+        "Walter O'Brian",
+        "Mark Washington",
+        "Neil Armstrong"
+      ],
+      "difficulty": 3
+    },
+    {
+      "question": "Who won the world cup?",
+      "answers": [
+        "zero",
+        "2016",
+        "2000",
+        "yesterday"
+      ],
+      "difficulty": 4
+    },
+    {
+      "question": "How many galaxies exist?",
+      "answers": [
+        "zero",
+        "one",
+        "two hundred million (known)",
+        "billions"
+      ],
+      "difficulty": 1
+    },
+    {
+      "question": "How many eggs make a dozen?",
+      "answers": [
+        "six",
+        "twelve",
+        "one hundred",
+        "seven"
+      ],
+      "difficulty": 3
+    }
+]
+

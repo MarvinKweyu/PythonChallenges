@@ -33,10 +33,10 @@ As well, display the questions currently created and as a list of questions and
 show the detail of the questions as well. We also need an option to delete these questions
 as selected and search across all  of those in the test.
 
-
+## 
 ## Pseudocode and calculation
 
 The marks for a question may be calculated as below:
 ```
-marks = difficulty * 2
+makrs = difficulty * 2
 ```

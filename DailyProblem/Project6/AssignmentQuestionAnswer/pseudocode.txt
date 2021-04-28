@@ -1,0 +1,104 @@
+This cli program creates a json based file with questions and answers marked with their difficulty
+
+
+
+Function input_something
+  Pass In: string
+  Repeatedly prompts for input until something other than whitespace is entered
+  Pass Out: string
+Endfunction 
+
+Function input_int
+  Pass In: integer
+  Repeatedly prompts for input until an integer is entered.
+  Pass Out: integer
+Endfunction 
+
+Function save_data
+  Pass In: nothing
+  open "data.txt" in write mode and write the data to it in JSON format.
+  Pass Out: nothing
+Endfunction 
+
+Function input_question_answers
+  Pass In: nothing
+  Accept multiple choice answers
+  Pass Out: array of all answers for specific question
+Endfunction 
+
+Function input_question_difficulty
+  Pass In: nothing
+  set question difficulty level
+  Pass Out: integer of question difficulty, ranging from 1-5
+Endfunction 
+
+
+set data to None
+
+
+BEGIN 
+    attempt to read the file 'data.txt'
+    with the file open, load the contents to a variable 
+EXCEPTION 
+    WHEN FileNotFoundError
+        set data to an empty array
+   
+END
+
+
+WHILE True   
+   show navigation prompt
+
+    IF adding new question
+    THEN 
+        initialize new_data to empty dictionary
+        accept input from user
+        call: input_something(prompt:input from user)
+        call: input_question_answers
+        call: input_question_difficulty
+
+        call: save_data(new_data)
+    ENDIF
+
+    IF listing questions
+    THEN 
+        IF data has no questions
+        THEN show no questions available
+        ELSE
+          loop through questions and display 
+        ENDIF
+    ENDIF
+
+    IF searching for question
+    THEN 
+        IF data has no questions
+        THEN show no questions available
+        ELSE
+            accept input from user
+            call: input_something(prompt:search input term from user)
+            loop through questions and display question if it has search term
+        ENDIF
+    ENDIF
+
+    IF viewing question
+    THEN smile
+    ENDIF
+
+    IF deleting question
+    THEN
+        accept input from user
+        call: input_something(prompt:search input term from user)
+        IF data has no questions
+        THEN show no questions available
+        ELSE
+            loop through questions and display question if it's index can be found from the array data
+        ENDIF
+    ENDIF
+
+    IF quiting program
+    THEN 
+       break WHILE 
+       quit program
+
+    ENDIF
+ENDWHILE
